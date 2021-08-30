@@ -83,7 +83,7 @@ let oClassNameMap = {
 let oAtomConfig = {}
 
 try {
-  oAtomConfig = require(__dirname + '../../atomcss.config.js');
+  oAtomConfig = require(__dirname + '/../../atomcss.config.js');
 } catch (e) {
   oAtomConfig = require(__dirname + '/atomcss.config.js');
 }
