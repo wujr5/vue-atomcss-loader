@@ -83,9 +83,9 @@ let oClassNameMap = {
 let oAtomConfig = {}
 
 try {
-  oAtomConfig = require(__dirname + '/atomcss.config.js');
+  oAtomConfig = require(__dirname + '../../atomcss.config.js');
 } catch (e) {
-  console.warn('找不到配置文件：atomcss.config.js')
+  oAtomConfig = require(__dirname + '/atomcss.config.js');
 }
 
 oClassNameMap = Object.assign(oClassNameMap, oAtomConfig);
@@ -121,7 +121,7 @@ module.exports = function(sSource) {
   function uniq(value, index, self) {
     return self.indexOf(value) === index;
   }
-  let aClassName = sPugString.match(atomReg).filter(uniq);
+  let aClassName = (sPugString.match(atomReg) || []).filter(uniq);
 
   // 输出 debug 数据
   this.query.debug && console.log('\n文件：', this.resourcePath, this.query);
