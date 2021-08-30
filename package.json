@@ -1,0 +1,17 @@
+{
+  "name": "pug-atomcss-loader",
+  "version": "1.0.0",
+  "description": "",
+  "main": "atomcss-loader.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "atomcss"
+  ],
+  "author": "吴家荣",
+  "license": "ISC",
+  "devDependencies": {
+    "lodash": "^4.17.21"
+  }
+}
