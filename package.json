@@ -1,6 +1,6 @@
 {
   "name": "pug-atomcss-loader",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "",
   "main": "atomcss-loader.js",
   "scripts": {
