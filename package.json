@@ -10,8 +10,5 @@
     "atomcss"
   ],
   "author": "吴家荣",
-  "license": "ISC",
-  "devDependencies": {
-    "lodash": "^4.17.21"
-  }
+  "license": "ISC"
 }

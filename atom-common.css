@@ -1,0 +1,351 @@
+/* 通用水平垂直居中 */
+.vh-parent {
+  position: relative;
+}
+
+.v {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.h {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.vh {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* 宽高 */
+.maxwp-100 {
+  max-width: 100%;
+}
+
+.maxhp-100 {
+  max-height: 100%;
+}
+
+/* 外边距 */
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* 通用背景色 */
+.bg-white {
+  background-color: white;
+}
+
+.bg-yellow {
+  background-color: yellow;
+}
+
+.bg-blue {
+  background-color: blue;
+}
+
+.bg-green {
+  background-color: green;
+}
+
+.bg-red {
+  background-color: red;
+}
+
+.bg-black {
+  background-color: black;
+}
+
+/* 占位图 */
+.bg-image {
+  background-color: #E1E3E8;
+}
+
+.bg-text {
+  background-color: #F5F7FA;
+}
+
+.bg-loading {
+  background-image: url('https://mlook.ilovelook.cn/wxapp/kol/bg-spinner.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px;
+}
+
+/* 通用字体色 */
+.c-white {
+  color: white;
+}
+
+.c-yellow {
+  color: yellow;
+}
+
+.c-blue {
+  color: blue;
+}
+
+.c-green {
+  color: green;
+}
+
+.c-red {
+  color: red;
+}
+
+.c-black {
+  color: black;
+}
+
+.c-gray {
+  color: gray;
+}
+
+/* text-align */
+.t-c {
+  text-align: center;
+}
+
+.t-l {
+  text-align: left;
+}
+
+.t-r {
+  text-align: right;
+}
+
+/* display */
+.dspl-inbl,
+.inbl {
+  display: inline-block;
+}
+
+.dspl-bl {
+  display: block;
+}
+
+/* vertical-align */
+.vtal-md {
+  vertical-align: middle;
+}
+
+.vtal-bt {
+  vertical-align: bottom;
+}
+
+.vtal-top {
+  vertical-align: top;
+}
+
+/* float */
+.fl-r {
+  float: right;
+}
+
+.cs-pt {
+  cursor: pointer;
+}
+
+.fl-l {
+  float: left;
+}
+
+/* box-sizing */
+.bs-ct {
+  box-sizing: content-box;
+}
+
+.bs-bd {
+  box-sizing: border-box;
+}
+
+/* position */
+.pst-rlt {
+  position: relative;
+}
+
+.pst-absl {
+  position: absolute;
+}
+
+.pst-absli {
+  position: absolute !important;
+}
+
+.pst-fx {
+  position: fixed;
+}
+
+/* 水平滑动 */
+.h-scroll {
+  overflow-x: scroll;
+  width: 100%;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 单行省略 */
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* 多行省略 2 ~ 5 */
+@for $i from 2 through 10 {
+  .text-ellipsis-#{$i} {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: $i;
+    -webkit-box-orient: vertical;
+  }
+}
+
+/* 折行 */
+.word-wrap {
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+/* 禁止事件 */
+.event-disabled {
+  pointer-events: none;
+}
+
+/* overflow */
+.ovfl-hd {
+  overflow: hidden;
+}
+
+.ovfl-scroll {
+  overflow: scroll;
+}
+
+.ovfl-vsb {
+  overflow: visible;
+}
+
+.ovfl-x-hd {
+  overflow-x: hidden;
+}
+
+.ovfl-x-scroll {
+  overflow-x: scroll;
+}
+.ovfl-x-auto {
+  overflow-x: auto;
+}
+.ovfl-y-hd {
+  overflow-y: hidden;
+}
+
+.ovfl-y-scroll {
+  overflow-y: scroll;
+}
+.ovfl-y-auto {
+  overflow-y: auto;
+}
+/* border-style */
+.bd-solid {
+  border-style: solid;
+}
+
+.cl-b {
+  clear: both;
+}
+
+.cl-l {
+  clear: left;
+}
+
+.cl-r {
+  clear: right;
+}
+
+/* 淡入淡出效果 */
+.fadein-init {
+  opacity: 0;
+  -webkit-transition: opacity 0.2s ease-in;
+  -moz-transition: opacity 0.2s ease-in;
+  -ms-transition: opacity 0.2s ease-in;
+  -o-transition: opacity 0.2s ease-in;
+  transition: opacity 0.2s ease-in;
+}
+
+.fadein {
+  opacity: 1;
+}
+
+.rotate-90 {
+  transform: rotate(90deg);
+}
+
+.rotate-180 {
+  transform: rotate(180deg);
+}
+
+.rotate-270 {
+  transform: rotate(270deg);
+}
+
+.bd-1 {
+  border: 1px solid #e1e5ee;
+}
+.bdt-1 {
+  border-top: 1px solid #e1e5ee;
+}
+.bdb-1 {
+  border-bottom: 1px solid #e1e5ee;
+}
+.bdy-1 {
+  border-top: 1px solid #e1e5ee;
+  border-bottom: 1px solid #e1e5ee;
+}
+.bdl-1 {
+  border-left: 1px solid #e1e5ee;
+}
+.bdr-1 {
+  border-right: 1px solid #e1e5ee;
+}
+.bdx-1 {
+  border-left: 1px solid #e1e5ee;
+  border-right: 1px solid #e1e5ee;
+}
+.shadow {
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 2019.04.23（二）：不知原因为何，项目中的 css 会把「-webkit-box-orient: vertical;」处理掉，因此独立出来 */
+
+.te {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  white-space: initial;
+}
+
+/* 多行省略 1 ~ 5 */
+.te-1 {
+  -webkit-line-clamp: 1;
+}
+.te-2 {
+  -webkit-line-clamp: 2;
+}
+.te-3 {
+  -webkit-line-clamp: 3;
+}
+.te-4 {
+  -webkit-line-clamp: 4;
+}
+.te-5 {
+  -webkit-line-clamp: 5;
+}
