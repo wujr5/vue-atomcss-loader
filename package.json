@@ -1,7 +1,12 @@
 {
-  "name": "pug-atomcss-loader",
+  "name": "vue-pug-atomcss-loader",
   "version": "1.0.4",
   "description": "",
+  "homepage": "https://github.com/wujr5/vue-pug-atomcss-loader",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wujr5/vue-pug-atomcss-loader.git"
+  },
   "main": "atomcss-loader.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
