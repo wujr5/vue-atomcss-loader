@@ -29,7 +29,15 @@ module: {
 // ... 其他配置
 ```
 
-## 默认的样式
+引用通用原子类：
+
+```js
+import 'vue-pug-atomcss-loader/atomcss-common.css'
+```
+
+## 数值原子类
+
+> 属性值具有数字的原子类
 
 ### margin、padding、width、height、border
 
@@ -52,7 +60,13 @@ div.m-10.ml-10.mr-10.mt-10.mb-10.mx-10.my-10
 最终会生成如下css：
 
 ```css
-.m-10{margin: 10px},.ml-10{margin-left: 10px},.mr-10{margin-right: 10px},.mt-10{margin-top:10px},.mb-10{margin-bottom: 10px},.mx-10{margin-left: 10px; margin-right: 10px},.my-10{margin-top: 10px; margin-bottom: 10px}
+.m-10{margin: 10px}
+.ml-10{margin-left: 10px}
+.mr-10{margin-right: 10px}
+.mt-10{margin-top:10px}
+.mb-10{margin-bottom: 10px}
+.mx-10{margin-left: 10px; margin-right: 10px}
+.my-10{margin-top: 10px; margin-bottom: 10px}
 ```
 
 `padding`对应的缩写：
@@ -65,64 +79,104 @@ div.m-10.ml-10.mr-10.mt-10.mb-10.mx-10.my-10
 * padding-left & padding-right: px
 * padding-top & padding-bottom: py
 
-`width`对应的缩写：
+例子：
+
+```pug
+div.p-10.pl-10.pr-10.pt-10.pb-10.px-10.py-10
+```
+
+最终会生成如下css：
+
+```css
+.p-10{padding: 10px}
+.pl-10{padding-left: 10px}
+.pr-10{padding-right: 10px}
+.pt-10{padding-top:10px}
+.pb-10{padding-bottom: 10px}
+.px-10{padding-left: 10px; padding-right: 10px}
+.py-10{padding-top: 10px; padding-bottom: 10px}
+```
+
+`width`、`height`、`border-radius`对应的缩写：
 
 * width: w
 * width(%)：wp
-
-`height`对应的缩写：
-
 * height: h
 * height(%)：hp
-
-`border`对应的缩写：
-
 * border-radius: br
+
+例子：
+
+```pug
+div.w-100.wp-50.h-100.hp-50.br-50
+```
+
+最终会生成如下css：
+
+```css
+.w-100{width: 100px}
+.wp-50{width: 50%}
+.h-100{height: 100px}
+.hp-50{height: 50%}
+.br-50{border-radius: 50px}
+```
 
 ### left、right、top、bottom
 
-分组：
+对应的缩写：
 
-- `left`
-- `right`
-- `top`
-- `bottom`
+* left: l
+* right: r
+* top: t
+* bottom: b
 
-```css
-@for $i from 0 through 750 {
-  .r-#{$i} {
-    right: $i * 1px;
-  }
-  .l-#{$i} {
-    left: $i * 1px;
-  }
-  .t-#{$i} {
-    top: $i * 1px;
-  }
-  .b-#{$i} {
-    bottom: $i * 1px;
-  }
-}
+例子：
+
+```pug
+div.l-10.r-10.t-10.b-10
 ```
 
-### line-height、font-size
+最终会生成如下css：
 
-- `line-height`
-- `font-size`
-- `font-weight`
+```css
+.l-10{left: 10px}
+.r-10{right: 10px}
+.t-10{top: 10px}
+.b-10{bottom: 10px}
+```
+
+### line-height、font
+
+对应的缩写：
+
+* line-height: lh
+* font-size: fs
+* font-weight: fw
+
+> 注意：fw 一般用法是：fw-100、fw-200、fw-300、fw-400、fw-500、fw-600，其他数值不生效
+
+例子：
+
+```pug
+div.lh-100.fs-40.fw-600
+```
+
+最终会生成如下css：
+
+```css
+.lh-100{line-height: 100px}
+.fs-40{font-size: 40px}
+.fw-600{font-weight: 600}
+```
 
 ## 通用原子类
 
-不具有单位，各端通用：`atom-commom.scss`。
-
-gzip + min 1KB
-
+> 属性值不具有数字的原子类 `atom-commom.scss`
 
 ### 水平垂直居中
 
-
 ```css
-// 通用水平垂直居中
+/* 通用水平垂直居中 */
 .vh-parent {
   position: relative;
 }
@@ -143,7 +197,6 @@ gzip + min 1KB
   transform: translate(-50%, -50%);
 }
 ```
-
 
 ### 单行和多行省略
 
