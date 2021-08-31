@@ -94,9 +94,9 @@ module.exports = {
 
 > 属性值具有数字的原子类
 
-### margin、padding、width、height、border
+### margin、padding、width、height、border-radius
 
-`margin`对应的缩写：
+**`margin`对应的缩写：**
 
 * margin: m
 * margin-left: ml
@@ -130,7 +130,7 @@ div.m-10.ml-10.mr-10.mt-10.mb-10.mx-10.my-10
 .my-10{margin-top: 10px; margin-bottom: 10px}
 ```
 
-`padding`对应的缩写：
+**`padding`对应的缩写：**
 
 * padding: p
 * padding-left: pl
@@ -164,7 +164,7 @@ div.p-10.pl-10.pr-10.pt-10.pb-10.px-10.py-10
 .py-10{padding-top: 10px; padding-bottom: 10px}
 ```
 
-`width`、`height`、`border-radius`对应的缩写：
+**`width`、`height`、`border-radius`对应的缩写：**
 
 * width: w
 * width(%)：wp
