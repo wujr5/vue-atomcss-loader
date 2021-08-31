@@ -4,15 +4,15 @@
 
 ## 使用
 
-安装：
+### 安装
 
 ```
 npm i -D vue-pug-atomcss-loader
 ```
 
-配置：
+### 配置
 
-> webpack 或 vue.config.js 中添加配置
+**webpack 或 vue.config.js 中添加配置**
 
 ```js
 // ... 其他配置
@@ -29,7 +29,24 @@ module: {
 // ... 其他配置
 ```
 
-引用通用原子类：
+**atomcss.config.js**
+
+```js
+// atomcss.config.js
+module.exports = {
+  mode: 'px',
+  config: {
+    // 用于定制原子类
+  }
+}
+```
+
+关于 `mode` 的说明：
+* 可选项：`px` 和 `rem`
+* `px`：单位是 px，一般用于 PC Web；`rem`：单位是 rem，一般用于 Mobile Web（H5）
+* 默认为 `px`
+
+**引用通用原子类**
 
 ```js
 import 'vue-pug-atomcss-loader/atomcss-common.css'
@@ -477,13 +494,16 @@ div.lh-100.fs-40.fw-600
 ```js
 // atomcss.config.js
 module.exports = {
-  // 数值原子类配置
-  '.fsize': 'font-size: $px;',
-  '.bd': 'border: $px solid #e1e5ee;',
-  
-  // 通用原子类配置
-  '.bg-red': 'background: red;',
-  // ... 你的配置
+  mode: 'px',
+  config: {
+    // 数值原子类配置
+    '.fsize': 'font-size: $px;',
+    '.bd': 'border: $px solid #e1e5ee;',
+
+    // 通用原子类配置
+    '.bg-red': 'background: red;',
+    // ... 你的配置
+  }
 }
 ```
 
@@ -492,6 +512,7 @@ module.exports = {
 * 包含 `$` 符号，此符号代表属性值中的数字，`vue-pug-atomcss-loader` 会将此替换成类名内的数值
 * 使用形式为：`.fsize-100`，数字与主体用 `-` 隔开
 * 如：`.fsize: font-size: $px;`，`.fsize-100`，会生成css：`.fsize-100{font-size: 100px}`
+* 根据 mode 来修改单位
 
 **通用原子类定制**
 

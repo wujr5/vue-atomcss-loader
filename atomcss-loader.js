@@ -1,20 +1,15 @@
 /**
- * 基础原子类定义
- *
  * 原子类定义如下：
  *
  * margin：m、ml、mr、mt、mb、mx、my
  * padding：p、pl、pr、pt、pb、px、py
  * width：w、w-p
  * height：h、h-p
- * 四方向：l、r、t、b；（h5 端简写由于跟 margin 冲突，添加第二个字母 o：mol、mor、mot、mob）
+ * 四方向：l、r、t、b
  * 行高：lh
  * 字体：fs、fw
  * border-radius：br
  *
- * 「通用原子类」，在 /assets/style/atom.style 中单独支持
- *
- * 参考文档：https://docs.ilovelook.cn/#/atom
  */
 const fs = require('fs');
 
@@ -81,20 +76,30 @@ let oClassNameMap = {
 
 let oAtomConfig = {}
 
+// 读取配置文件，如果不存在，就是用默认的配置文件
 try {
   oAtomConfig = require(__dirname + '/../../atomcss.config.js');
 } catch (e) {
   oAtomConfig = require(__dirname + '/atomcss.config.js');
 }
 
-oClassNameMap = Object.assign(oClassNameMap, oAtomConfig);
+// 如果模式为 rem，则将 px 替换为 rem
+if (oAtomConfig.mode === 'rem') {
+  for (let key in oClassNameMap) {
+    oClassNameMap[key] = oClassNameMap[key].replace(/\$px/ig, '$rem');
+  }
+}
+
+oClassNameMap = Object.assign(oClassNameMap, oAtomConfig.config);
 
 let sAtomRegExp = '';
 for (let key in oClassNameMap) {
   let value = oClassNameMap[key];
 
+  // 数值原子类的正则
   if (value.indexOf('$') != -1) {
     sAtomRegExp += `\\${key}-[0-9]+|`;
+  // 通用原子类的正则
   } else {
     sAtomRegExp += `\\${key}|`
   }

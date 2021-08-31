@@ -1,5 +1,5 @@
 <template lang="pug">
-  h1.fsize-150.bg-red.bg-red.bg-red test
+  h1.fsize-150.h-10.lh-10.bg-red test
 </template>
 
 <script>
