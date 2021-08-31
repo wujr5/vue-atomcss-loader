@@ -29,7 +29,7 @@ module: {
 // ... 其他配置
 ```
 
-**atomcss.config.js**
+**项目根目录下的：atomcss.config.js**
 
 ```js
 // atomcss.config.js
