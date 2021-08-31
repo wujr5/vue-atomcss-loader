@@ -56,6 +56,40 @@ module.exports = {
 import 'vue-atomcss-loader/atomcss-common.css'
 ```
 
+## 定制原子类
+
+在根目录增加配置文件：`atomcss.config.js`，根据规则定制自己的原子类：
+
+```js
+// atomcss.config.js
+module.exports = {
+  mode: 'px',
+  config: {
+    // 数值原子类配置示例
+    '.fsize': 'font-size: $px;',
+    '.bd': 'border: $px solid #e1e5ee;',
+
+    // 通用原子类配置示例
+    '.bg-red': 'background: red;',
+
+    // ... 你的配置
+  }
+}
+```
+
+**数值原子类定制**
+
+* 包含 `$` 符号，此符号代表属性值中的数字，`vue-atomcss-loader` 会将此替换成类名内的数值
+* 使用形式为：`.fsize-100`，数字与主体用 `-` 隔开
+* 如：`.fsize: font-size: $px;`，`.fsize-100`，会生成css：`.fsize-100{font-size: 100px}`
+* 根据 mode 来修改单位
+
+**通用原子类定制**
+
+* 不包含 `$` 符号，使用时类名直接使用，不可包含数字
+* 如：`.bg-red': 'background: red;`，使用时直接使用：`.bg-red`
+
+
 ## 数值原子类
 
 > 属性值具有数字的原子类
@@ -108,7 +142,13 @@ div.m-10.ml-10.mr-10.mt-10.mb-10.mx-10.my-10
 
 例子：
 
+```html
+<!-- html -->
+<div class="p-10 pl-10 pr-10 pt-10 pb-10 px-10 py-10"></div>
+```
+
 ```pug
+//- pug
 div.p-10.pl-10.pr-10.pt-10.pb-10.px-10.py-10
 ```
 
@@ -134,7 +174,13 @@ div.p-10.pl-10.pr-10.pt-10.pb-10.px-10.py-10
 
 例子：
 
+```html
+<!-- html -->
+<div class="w-100.wp-50.h-100.hp-50.br-50"></div>
+```
+
 ```pug
+//- pug
 div.w-100.wp-50.h-100.hp-50.br-50
 ```
 
@@ -159,7 +205,13 @@ div.w-100.wp-50.h-100.hp-50.br-50
 
 例子：
 
+```html
+<!-- html -->
+<div class="l-10.r-10.t-10.b-10"></div>
+```
+
 ```pug
+//- pug
 div.l-10.r-10.t-10.b-10
 ```
 
@@ -184,7 +236,13 @@ div.l-10.r-10.t-10.b-10
 
 例子：
 
+```html
+<!-- html -->
+<div class="lh-100.fs-40.fw-600"></div>
+```
+
 ```pug
+//- pug
 div.lh-100.fs-40.fw-600
 ```
 
@@ -496,36 +554,3 @@ div.lh-100.fs-40.fw-600
   opacity: 1;
 }
 ```
-
-## 定制原子类
-
-在根目录增加配置文件：`atomcss.config.js`，根据规则定制自己的原子类：
-
-```js
-// atomcss.config.js
-module.exports = {
-  mode: 'px',
-  config: {
-    // 数值原子类配置示例
-    '.fsize': 'font-size: $px;',
-    '.bd': 'border: $px solid #e1e5ee;',
-
-    // 通用原子类配置示例
-    '.bg-red': 'background: red;',
-
-    // ... 你的配置
-  }
-}
-```
-
-**数值原子类定制**
-
-* 包含 `$` 符号，此符号代表属性值中的数字，`vue-atomcss-loader` 会将此替换成类名内的数值
-* 使用形式为：`.fsize-100`，数字与主体用 `-` 隔开
-* 如：`.fsize: font-size: $px;`，`.fsize-100`，会生成css：`.fsize-100{font-size: 100px}`
-* 根据 mode 来修改单位
-
-**通用原子类定制**
-
-* 不包含 `$` 符号，使用时类名直接使用，不可包含数字
-* 如：`.bg-red': 'background: red;`，使用时直接使用：`.bg-red`
