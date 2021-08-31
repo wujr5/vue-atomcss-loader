@@ -196,37 +196,30 @@ div.lh-100.fs-40.fw-600
   left: 50%;
   transform: translate(-50%, -50%);
 }
+/* 块元素水平居中 */
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
 ```
 
 ### 单行和多行省略
 
 ```css
 /* 行省略 */
-.text-ellipsis {
+.te-1 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.text-ellipsis-2 {
+.te-2 {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
 }
-/* 支持到： .text-ellipsis-3 ~ .text-ellipsis-10 */
-```
-
-### 水平滑动
-
-```css
-// 水平滑动
-.h-scroll {
-  overflow-x: scroll;
-  width: 100%;
-  white-space: nowrap;
-  -webkit-overflow-scrolling: touch;
-}
+/* 支持到： .te-3 ~ .te-10 */
 ```
 
 ### 换行
@@ -277,6 +270,13 @@ div.lh-100.fs-40.fw-600
 .bg-text {
   background-color: #F5F7FA;
 }
+/* 背景loading图 */
+.bg-loading {
+  background-image: url('https://tva3.sinaimg.cn/large/ed796d65ly1gtzzp2we99g202p02pmy1.gif');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 50px;
+}
 ```
 
 ### 字体色
@@ -286,8 +286,23 @@ div.lh-100.fs-40.fw-600
 .c-white {
   color: white;
 }
+.c-yellow {
+  color: yellow;
+}
+.c-blue {
+  color: blue;
+}
+.c-green {
+  color: green;
+}
+.c-red {
+  color: red;
+}
 .c-black {
   color: black;
+}
+.c-gray {
+  color: gray;
 }
 ```
 
@@ -333,11 +348,19 @@ div.lh-100.fs-40.fw-600
 ### float
 
 ```css
-.fl-right {
+.fl-r {
   float: right;
 }
-.fl-left {
+.fl-l {
   float: left;
+}
+```
+
+### 鼠标
+
+```css
+.cs-pt {
+  cursor: pointer;
 }
 ```
 
@@ -384,11 +407,24 @@ div.lh-100.fs-40.fw-600
 .ovfl-x-scroll {
   overflow-x: scroll;
 }
+.ovfl-x-auto {
+  overflow-x: auto;
+}
 .ovfl-y-hd {
   overflow-y: hidden;
 }
 .ovfl-y-scroll {
   overflow-y: scroll;
+}
+.ovfl-y-auto {
+  overflow-y: auto;
+}
+/* 水平滚动 */
+.h-scroll {
+  overflow-x: scroll;
+  width: 100%;
+  white-space: nowrap;
+  -webkit-overflow-scrolling: touch;
 }
 ```
 
@@ -416,7 +452,7 @@ div.lh-100.fs-40.fw-600
 
 ### 体验优化
 
-**淡入淡出效果**
+> 淡入淡出
 
 ```css
 .fadein-init {
