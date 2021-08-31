@@ -171,7 +171,7 @@ div.lh-100.fs-40.fw-600
 
 ## 通用原子类
 
-> 属性值不具有数字的原子类 `atom-commom.scss`
+> 属性值不具有数字的原子类，使用时需要引入：`vue-pug-atomcss-loader/atomcss-commom.scss`
 
 ### 水平垂直居中
 
@@ -200,29 +200,24 @@ div.lh-100.fs-40.fw-600
 
 ### 单行和多行省略
 
-
 ```css
-// 单行省略
+/* 行省略 */
 .text-ellipsis {
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
-// 多行省略 2 ~ 5
-@for $i from 2 through 10 {
-  .text-ellipsis-#{$i} {
-    overflow : hidden;
-    text-overflow: ellipsis;
-    display: -webkit-box;
-    -webkit-line-clamp: $i;
-    -webkit-box-orient: vertical;
-  }
+.text-ellipsis-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }
+/* 支持到： .text-ellipsis-3 ~ .text-ellipsis-10 */
 ```
 
-
 ### 水平滑动
-
 
 ```css
 // 水平滑动
@@ -234,12 +229,9 @@ div.lh-100.fs-40.fw-600
 }
 ```
 
-
-### 折行
-
+### 换行
 
 ```css
-// 折行
 .word-wrap {
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -247,23 +239,18 @@ div.lh-100.fs-40.fw-600
 }
 ```
 
-
 ### 禁止事件
 
-
 ```css
-// 禁止事件
 .event-disabled {
   pointer-events: none;
 }
 ```
 
-
 ### 背景色
 
-
 ```css
-// 通用背景色
+/* 通用背景色 */
 .bg-white {
   background-color: white;
 }
@@ -282,52 +269,45 @@ div.lh-100.fs-40.fw-600
 .bg-black {
   background-color: black;
 }
-/* 占位图 */
+/* 图片占位色 */
 .bg-image {
   background-color: #E1E3E8;
 }
+/* 文字占位色 */
 .bg-text {
   background-color: #F5F7FA;
 }
 ```
 
-
 ### 字体色
 
-
 ```css
-// 通用字体色
-.color-white {
+/* 通用字体色 */
+.c-white {
   color: white;
 }
-.color-black {
+.c-black {
   color: black;
 }
 ```
 
-
 ### 字体位置
 
-
 ```css
-// text-align
-.text-center {
+.t-c {
   text-align: center;
 }
-.text-left {
+.t-l {
   text-align: left;
 }
-.text-right {
+.t-r {
   text-align: right;
 }
 ```
 
-
 ### display
 
-
 ```css
-// display
 .dspl-inbl, .inbl {
   display: inline-block;
 }
@@ -336,12 +316,9 @@ div.lh-100.fs-40.fw-600
 }
 ```
 
-
 ### vertical-align
 
-
 ```css
-// vertical-align
 .vtal-md {
   vertical-align: middle;
 }
@@ -353,12 +330,9 @@ div.lh-100.fs-40.fw-600
 }
 ```
 
-
 ### float
 
-
 ```css
-// float
 .fl-right {
   float: right;
 }
@@ -367,12 +341,9 @@ div.lh-100.fs-40.fw-600
 }
 ```
 
-
 ### box-sizing
 
-
 ```css
-// box-sizing
 .bs-ct {
   box-sizing: content-box;
 }
@@ -381,12 +352,9 @@ div.lh-100.fs-40.fw-600
 }
 ```
 
-
 ### position
 
-
 ```css
-// position
 .pst-rlt {
   position: relative;
 }
@@ -398,12 +366,9 @@ div.lh-100.fs-40.fw-600
 }
 ```
 
-
 ### overflow
 
-
 ```css
-// overflow
 .ovfl-hd {
   overflow: hidden;
 }
@@ -427,20 +392,15 @@ div.lh-100.fs-40.fw-600
 }
 ```
 
-
 ### border-style
 
-
 ```css
-// border-style
 .bd-solid {
   border-style: solid;
 }
 ```
 
-
 ### 清除浮动
-
 
 ```css
 .cl-b {
@@ -454,12 +414,9 @@ div.lh-100.fs-40.fw-600
 }
 ```
 
-
 ### 体验优化
 
-
 **淡入淡出效果**
-
 
 ```css
 .fadein-init {
@@ -474,5 +431,19 @@ div.lh-100.fs-40.fw-600
 
 .fadein {
   opacity: 1;
+}
+```
+
+## 定制原子类
+
+在根目录增加配置文件：`atomcss.config.js`，根据规则定制自己的原子类：
+
+```js
+// atomcss.config.js
+module.exports = {
+  '.fsize': 'font-size: $px;',
+  '.bg-red': 'background: red;',
+  '.bd': 'border: $px solid #e1e5ee;',
+  // ... 你的配置
 }
 ```
