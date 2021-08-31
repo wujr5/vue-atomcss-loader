@@ -119,11 +119,9 @@ module.exports = function(sSource) {
     // html 文本需要特殊处理
     sClassString = sPugString ? sPugString[0] : '.' + sHtmlString[0].match(/class=("|')([a-zA-Z0-9 \- _]*)("|')/ig).map(item => item.replace(/class=('|")|("|')/g, '').split(' ').join('.')).join('.');
   } catch (e) {
-    console.log(e, sHtmlString);
+    console.log(e);
     return sSource;
   }
-
-  console.log(sClassString)
 
   // 没有找到 template 模板，则无需处理
   if (!sClassString) return sSource;
