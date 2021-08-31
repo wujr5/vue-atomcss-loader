@@ -498,12 +498,13 @@ div.lh-100.fs-40.fw-600
 module.exports = {
   mode: 'px',
   config: {
-    // 数值原子类配置
+    // 数值原子类配置示例
     '.fsize': 'font-size: $px;',
     '.bd': 'border: $px solid #e1e5ee;',
 
-    // 通用原子类配置
+    // 通用原子类配置示例
     '.bg-red': 'background: red;',
+
     // ... 你的配置
   }
 }
