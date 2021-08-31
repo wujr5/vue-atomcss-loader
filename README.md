@@ -477,9 +477,23 @@ div.lh-100.fs-40.fw-600
 ```js
 // atomcss.config.js
 module.exports = {
+  // 数值原子类配置
   '.fsize': 'font-size: $px;',
-  '.bg-red': 'background: red;',
   '.bd': 'border: $px solid #e1e5ee;',
+  
+  // 通用原子类配置
+  '.bg-red': 'background: red;',
   // ... 你的配置
 }
 ```
+
+**数值原子类定制**
+
+* 包含 `$` 符号，此符号代表属性值中的数字，`vue-pug-atomcss-loader` 会将此替换成类名内的数值
+* 使用形式为：`.fsize-100`，数字与主体用 `-` 隔开
+* 如：`.fsize: font-size: $px;`，`.fsize-100`，会生成css：`.fsize-100{font-size: 100px}`
+
+**通用原子类定制**
+
+* 不包含 `$` 符号，使用时类名直接使用，不可包含数字
+* 如：`.bg-red': 'background: red;`，使用时直接使用：`.bg-red`
