@@ -73,11 +73,10 @@ let oClassNameMap = {
   // 字体
   '.fs': 'font-size:$px;',
   '.fw': 'font-weight:$;',
-  // border-radius
-  '.br': 'border-radius:$px',
-  '.bgs': 'background-size:$px',
+  // background
+  '.bgs': 'background-size:$px;',
   // border
-  '.bd': 'border: $px solid #e1e5ee'
+  '.br': 'border-radius:$px;'
 };
 
 let oAtomConfig = {}
