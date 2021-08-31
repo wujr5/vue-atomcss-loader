@@ -2,9 +2,11 @@
 div
   h1.fsize-150.h-10.lh-10.bg-red test
   HelloWorld
+  include components/test.pug
 </template>
 
 <script>
+import '../../atomcss-common.css';
 import HelloWorld from './components/HelloWorld.vue';
 
 export default {

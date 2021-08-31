@@ -126,6 +126,18 @@ module.exports = function(sSource) {
   // 没有找到 template 模板，则无需处理
   if (!sClassString) return sSource;
 
+  // 支持 pug 文件内 include 的文件的编译
+  let pugFileList = sClassString.match(/include \S*\.pug/g) || [];
+  pugFileList.forEach((file) => {
+    let filePath = this.resourcePath.substr(0, this.resourcePath.lastIndexOf('/') + 1) + file.replace('include ', '');
+
+    // pug 文件改变，重新编译主文件
+    this.addDependency(filePath)
+
+    let content = fs.readFileSync(filePath, 'utf-8')
+    sClassString = sClassString.replace(file, content)
+  })
+
   let atomReg = new RegExp(sAtomRegExp, 'ig');
 
   // 获取 pc 端原子类类名数组，并剔除重复的类名
