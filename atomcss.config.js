@@ -1,5 +1,5 @@
 module.exports = {
-  mode: 'rem', // px：单位是 px，rem：单位是 rem，默认是 px
+  mode: 'px', // px：单位是 px，rem：单位是 rem，默认是 px
   config: {
     // 数值原子类定制
     '.fsize': 'font-size: $px;',
