@@ -1,15 +1,17 @@
-# vue-pug-atomcss-loader
+# vue-atomcss-loader
 
-> https://github.com/wujr5/vue-pug-atomcss-loader
+> https://github.com/wujr5/vue-atomcss-loader
 
-此 loader 是基于 vue、pug 的类名生成原子类样式的工具。
+基于 vue 的**按需**生成**原子类**样式的 loader。
+
+支持预编译语言：`pug`，其他预编译语言暂不支持。
 
 ## 使用
 
 ### 安装
 
 ```
-npm i -D vue-pug-atomcss-loader
+npm i -D vue-atomcss-loader
 ```
 
 ### 配置
@@ -23,7 +25,7 @@ module: {
     {
       test: /\.vue$/,
       use: [{
-        loader: 'vue-pug-atomcss-loader'
+        loader: 'vue-atomcss-loader'
       }]
     }
   ]
@@ -51,7 +53,7 @@ module.exports = {
 **引用通用原子类**
 
 ```js
-import 'vue-pug-atomcss-loader/atomcss-common.css'
+import 'vue-atomcss-loader/atomcss-common.css'
 ```
 
 ## 数值原子类
@@ -72,7 +74,13 @@ import 'vue-pug-atomcss-loader/atomcss-common.css'
 
 例子：
 
+```html
+<!-- html -->
+<div class="m-10 ml-10 mr-10 mt-10 mb-10 mx-10 my-10"></div>
+```
+
 ```pug
+//- pug
 div.m-10.ml-10.mr-10.mt-10.mb-10.mx-10.my-10
 ```
 
@@ -190,7 +198,7 @@ div.lh-100.fs-40.fw-600
 
 ## 通用原子类
 
-> 属性值不具有数字的原子类，使用时需要引入：`vue-pug-atomcss-loader/atomcss-commom.scss`
+> 属性值不具有数字的原子类，使用时需要引入：`vue-atomcss-loader/atomcss-commom.scss`
 
 ### 水平垂直居中
 
@@ -512,7 +520,7 @@ module.exports = {
 
 **数值原子类定制**
 
-* 包含 `$` 符号，此符号代表属性值中的数字，`vue-pug-atomcss-loader` 会将此替换成类名内的数值
+* 包含 `$` 符号，此符号代表属性值中的数字，`vue-atomcss-loader` 会将此替换成类名内的数值
 * 使用形式为：`.fsize-100`，数字与主体用 `-` 隔开
 * 如：`.fsize: font-size: $px;`，`.fsize-100`，会生成css：`.fsize-100{font-size: 100px}`
 * 根据 mode 来修改单位

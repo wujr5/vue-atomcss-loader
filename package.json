@@ -1,11 +1,11 @@
 {
-  "name": "vue-pug-atomcss-loader",
-  "version": "1.1.2",
+  "name": "vue-atomcss-loader",
+  "version": "1.2.0",
   "description": "",
-  "homepage": "https://github.com/wujr5/vue-pug-atomcss-loader",
+  "homepage": "https://github.com/wujr5/vue-atomcss-loader",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wujr5/vue-pug-atomcss-loader.git"
+    "url": "https://github.com/wujr5/vue-atomcss-loader.git"
   },
   "main": "atomcss-loader.js",
   "scripts": {

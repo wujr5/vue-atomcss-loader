@@ -109,15 +109,24 @@ sAtomRegExp = sAtomRegExp.substr(0, sAtomRegExp.length - 1);
 
 module.exports = function(sSource) {
   // 从 vue 文件中提取 pug 代码
-  let sPugString;
+  let sPugString, sHtmlString, sClassString;
   try {
-    sPugString = sSource.match(/<template lang=("|')pug("|')>([\s\S]*)<\/template>/g)[0];
+    // 匹配 pug
+    sPugString = sSource.match(/<template lang=("|')pug("|')>([\s\S]*)<\/template>/g);
+    // 匹配 html
+    sHtmlString = sSource.match(/<template>([\s\S]*)<\/template>/g);
+
+    // html 文本需要特殊处理
+    sClassString = sPugString ? sPugString[0] : '.' + sHtmlString[0].match(/class=("|')([a-zA-Z0-9 \- _]*)("|')/ig).map(item => item.replace(/class=('|")|("|')/g, '').split(' ').join('.')).join('.');
   } catch (e) {
+    console.log(e, sHtmlString);
     return sSource;
   }
 
+  console.log(sClassString)
+
   // 没有找到 template 模板，则无需处理
-  if (!sPugString) return sSource;
+  if (!sClassString) return sSource;
 
   let atomReg = new RegExp(sAtomRegExp, 'ig');
 
@@ -125,7 +134,7 @@ module.exports = function(sSource) {
   function uniq(value, index, self) {
     return self.indexOf(value) === index;
   }
-  let aClassName = (sPugString.match(atomReg) || []).filter(uniq);
+  let aClassName = (sClassString.match(atomReg) || []).filter(uniq);
 
   // 输出 debug 数据
   this.query.debug && console.log('\n文件：', this.resourcePath, this.query);

@@ -1,11 +1,17 @@
 <template lang="pug">
+div
   h1.fsize-150.h-10.lh-10.bg-red test
+  HelloWorld
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld.vue';
 
 export default {
   name: 'App',
+  components: {
+    HelloWorld
+  }
 }
 </script>
 
