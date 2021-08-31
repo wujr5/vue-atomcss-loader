@@ -1,5 +1,7 @@
 # vue-pug-atomcss-loader
 
+> https://github.com/wujr5/vue-pug-atomcss-loader
+
 此 loader 是基于 vue、pug 的类名生成原子类样式的工具。
 
 ## 使用
