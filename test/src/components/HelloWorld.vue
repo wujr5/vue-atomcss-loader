@@ -1,5 +1,5 @@
 <template>
-  <div class='hello fs-30 fw-600 bg-yellow'>
+  <div class='hello fs-30 fw-600'>
     <h1>{{ msg }}</h1>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>

@@ -1,6 +1,6 @@
 <template lang="pug">
 div
-  h1.fsize-150.h-10.lh-10.bg-red test
+  h1.fs-150.h-150.lh-150.bg-red test
   HelloWorld
   include components/test.pug
 </template>
