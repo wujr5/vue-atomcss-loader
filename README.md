@@ -262,7 +262,7 @@ div.lh-100.fs-40.fw-600
 .fw-600{font-weight: 600}
 ```
 
-## 色值值原子类
+## 色值原子类
 
 ### color、background-color
 
