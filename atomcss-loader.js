@@ -92,6 +92,7 @@ if (oAtomConfig.mode === 'rem') {
 
 oClassNameMap = Object.assign(oClassNameMap, oAtomConfig.config);
 
+// 生成正则表达式
 let sAtomRegExp = '';
 for (let key in oClassNameMap) {
   let value = oClassNameMap[key];
