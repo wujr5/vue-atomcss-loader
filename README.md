@@ -66,11 +66,14 @@ module.exports = {
   mode: 'px',
   config: {
     // 数值原子类配置示例
-    '.fsize': 'font-size: $px;',
-    '.bd': 'border: $px solid #e1e5ee;',
+    '.fsize': 'font-size: $rpx',
+    '.bd': 'border: $rpx solid #e1e5ee',
 
     // 通用原子类配置示例
-    '.bg-red': 'background: red;',
+    '.bgred': 'background: red',
+
+    // 色值类原子类配置示例
+    '.backcolor': 'background-color: #'
 
     // ... 你的配置
   }
@@ -83,6 +86,12 @@ module.exports = {
 * 使用形式为：`.fsize-100`，数字与主体用 `-` 隔开
 * 如：`.fsize: font-size: $px;`，`.fsize-100`，会生成css：`.fsize-100{font-size: 100px}`
 * 根据 mode 来修改单位
+
+**色值原子类定制**
+
+* 包含 `#` 符号，此符号代表属性值中的色值，只支持十六进制表示的 rgb 色值，`vue-atomcss-loader` 会将此替换成类名内的色值
+* 使用形式为：`.backcolor-aa33dd`，色值与主体用 `-` 隔开
+* 如：`.backcolor': 'background-color: #;`，`.backcolor-aa33dd`，会生成 css：`.backcolor-aa33dd{background-color: #aa33dd}`
 
 **通用原子类定制**
 
@@ -251,6 +260,27 @@ div.lh-100.fs-40.fw-600
 .lh-100{line-height: 100px}
 .fs-40{font-size: 40px}
 .fw-600{font-weight: 600}
+```
+
+## 色值值原子类
+
+### color、background-color
+
+例子：
+
+```html
+<!-- wxml -->
+<html class="c-123a6d bgc-00ff00"></html>
+```
+
+```pug
+<!-- pug -->
+.c-123a6d.bgc-00ff00
+```
+
+```css
+.c-123a6d{color: #123a6d}
+.bgc-00ff00{background-color: #00ff00}
 ```
 
 ## 通用原子类
