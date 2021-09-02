@@ -269,7 +269,7 @@ div.lh-100.fs-40.fw-600
 例子：
 
 ```html
-<!-- hxml -->
+<!-- html -->
 <html class="c-123a6d bgc-00ff00"></html>
 ```
 
