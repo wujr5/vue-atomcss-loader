@@ -169,7 +169,7 @@ module.exports = function(sSource) {
   aClassName.forEach(item => {
     let sKey;
 
-    let bColorFlag = oClassNameMap[item.split('-')[0]] && oClassNameMap[item.split('-')[0]].indexOf('#') != -1;
+    let bColorFlag = oClassNameMap[item.split('-')[0]] && oClassNameMap[item.split('-')[0]].indexOf('$') == -1 && oClassNameMap[item.split('-')[0]].indexOf('#') != -1;
 
     // 色值类
     if (bColorFlag) {
@@ -188,15 +188,16 @@ module.exports = function(sSource) {
     // 百分比数值，字重，无需使用单位
     if (['.wp', '.hp', '.fw'].includes(sKey)) {
       nValue = item.match(/\d+/)[0];
+      aStyleStr.push(`${item}{${oClassNameMap[sKey]}}`);
     } else {
       if (bColorFlag) {
-        nValue = '#' + item.split('-')[1]
+        nValue = '#' + item.split('-')[1];
+        aStyleStr.push(`${item}{${oClassNameMap[sKey].replace(/\#/g, nValue)}}`);
       } else {
         /\d+/.test(item) && (nValue = +item.match(/\d+/)[0]);
+        aStyleStr.push(`${item}{${oClassNameMap[sKey].replace(/\$/g, nValue)}}`);
       }
     }
-
-    aStyleStr.push(`${item}{${oClassNameMap[sKey].replace(/\$|\#/g, nValue)}}`);
   });
 
   // 输出 debug 数据
