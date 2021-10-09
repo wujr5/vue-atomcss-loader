@@ -125,7 +125,11 @@ module.exports = function(sSource) {
     sHtmlString = sSource.match(/<template>([\s\S]*)<\/template>/g);
 
     // html 文本需要特殊处理
-    sClassString = sPugString ? sPugString[0] : '.' + (sHtmlString[0].match(/class=("|')([a-zA-Z0-9 \- _]*)("|')/ig) || []).map(item => item.replace(/class=('|")|("|')/g, '').split(' ').join('.')).join('.');
+    if (sPugString) {
+      sClassString = sPugString[0]
+    } else if (sHtmlString) {
+      sClassString = '.' + (sHtmlString[0].match(/class=("|')([a-zA-Z0-9 \- _]*)("|')/ig) || []).map(item => item.replace(/class=('|")|("|')/g, '').split(' ').join('.')).join('.');
+    }
   } catch (e) {
     console.warn(e);
     return sSource;
