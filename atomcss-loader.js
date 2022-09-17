@@ -75,6 +75,8 @@ let oClassNameMap = {
   // 颜色
   '.c': 'color: #',
   '.bgc': 'background-color: #',
+  // z-index
+  '.z': 'z-index: $',
 };
 
 let oAtomConfig = {}

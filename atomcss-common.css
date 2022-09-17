@@ -111,16 +111,19 @@
   background-color: white;
 }
 .bg-yellow {
-  background-color: yellow;
+  background-color: #E39707;
 }
 .bg-blue {
-  background-color: blue;
+  background-color: #3894FF;
 }
 .bg-green {
-  background-color: green;
+  background-color: #35B953;
 }
 .bg-red {
-  background-color: red;
+  background-color: #E60707;
+}
+.bg-purple {
+  background-color: #75197C;
 }
 .bg-black {
   background-color: black;
@@ -146,16 +149,19 @@
   color: white;
 }
 .c-yellow {
-  color: yellow;
+  color: #E39707;
 }
 .c-blue {
-  color: blue;
+  color: #3894FF;
 }
 .c-green {
-  color: green;
+  color: #35B953;
 }
 .c-red {
-  color: red;
+  color: #E60707;
+}
+.c-purple {
+  color: #75197C;
 }
 .c-black {
   color: black;
@@ -180,9 +186,16 @@
 .inbl {
   display: inline-block;
 }
-
+.dspl-flex {
+  display: inline-block;
+}
 .dspl-bl {
   display: block;
+}
+
+/* flex */
+.flex-auto {
+  flex: auto
 }
 
 /* vertical-align */
