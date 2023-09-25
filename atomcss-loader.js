@@ -79,7 +79,7 @@ let oClassNameMap = {
   '.z': 'z-index: $',
 };
 
-let oAtomConfig = {}
+let oAtomConfig = {};
 
 // 读取配置文件，如果不存在，就是用默认的配置文件
 try {
@@ -91,7 +91,7 @@ try {
 // 如果模式为 rem，则将 px 替换为 rem
 if (oAtomConfig.mode === 'rem') {
   for (let key in oClassNameMap) {
-    oClassNameMap[key] = oClassNameMap[key].replace(/\$px/ig, '$rem');
+    oClassNameMap[key] = oClassNameMap[key].replace(/\$px/gi, '$rem');
   }
 }
 
@@ -109,28 +109,39 @@ for (let key in oClassNameMap) {
   // 色值原子类正则
   else if (value.indexOf('#') != -1) {
     sAtomRegExp += `\\${key}-[0-9a-fA-F]+|`;
-  // 通用原子类的正则
+    // 通用原子类的正则
   } else {
-    sAtomRegExp += `\\${key}|`
+    sAtomRegExp += `\\${key}|`;
   }
 }
 // 去掉最后一个 | 符号
 sAtomRegExp = sAtomRegExp.substr(0, sAtomRegExp.length - 1);
 
-module.exports = function(sSource) {
+module.exports = function (sSource) {
   // 从 vue 文件中提取 pug 代码
   let sPugString, sHtmlString, sClassString;
   try {
     // 匹配 pug
-    sPugString = sSource.match(/<template lang=("|')pug("|')>([\s\S]*)<\/template>/g);
+    sPugString = sSource.match(
+      /<template lang=("|')pug("|')>([\s\S]*)<\/template>/g
+    );
     // 匹配 html
     sHtmlString = sSource.match(/<template>([\s\S]*)<\/template>/g);
 
     // html 文本需要特殊处理
     if (sPugString) {
-      sClassString = sPugString[0]
+      sClassString = sPugString[0];
     } else if (sHtmlString) {
-      sClassString = '.' + (sHtmlString[0].match(/class=("|')([a-zA-Z0-9 \- _]*)("|')/ig) || []).map(item => item.replace(/class=('|")|("|')/g, '').split(' ').join('.')).join('.');
+      sClassString =
+        '.' +
+        (sHtmlString[0].match(/class=("|')([a-zA-Z0-9 \- _]*)("|')/gi) || [])
+          .map((item) =>
+            item
+              .replace(/class=('|")|("|')/g, '')
+              .split(' ')
+              .join('.')
+          )
+          .join('.');
     }
   } catch (e) {
     console.warn(e);
@@ -143,14 +154,16 @@ module.exports = function(sSource) {
   // 支持 pug 文件内 include 的文件的编译
   let pugFileList = sClassString.match(/include \S*\.pug/g) || [];
   pugFileList.forEach((file) => {
-    let filePath = this.resourcePath.substr(0, this.resourcePath.lastIndexOf('/') + 1) + file.replace('include ', '');
+    let filePath =
+      this.resourcePath.substr(0, this.resourcePath.lastIndexOf('/') + 1) +
+      file.replace('include ', '');
 
     // pug 文件改变，重新编译主文件
-    this.addDependency(filePath)
+    this.addDependency(filePath);
 
-    let content = fs.readFileSync(filePath, 'utf-8')
-    sClassString = sClassString.replace(file, content)
-  })
+    let content = fs.readFileSync(filePath, 'utf-8');
+    sClassString = sClassString.replace(file, content);
+  });
 
   let atomReg = new RegExp(sAtomRegExp, 'ig');
 
@@ -168,24 +181,40 @@ module.exports = function(sSource) {
   let aStyleStr = [];
 
   // 开始生成原子类
-  aClassName.forEach(item => {
-    let bColorFlag = oClassNameMap[item.split('-')[0]] && oClassNameMap[item.split('-')[0]].indexOf('$') == -1 && oClassNameMap[item.split('-')[0]].indexOf('#') != -1;
+  aClassName.forEach((item) => {
+    let bColorFlag =
+      oClassNameMap[item.split('-')[0]] &&
+      oClassNameMap[item.split('-')[0]].indexOf('$') == -1 &&
+      oClassNameMap[item.split('-')[0]].indexOf('#') != -1 &&
+      /^[0-9a-fA-F]+$/.test(item.split('-')[1]); // 十六进制
 
     // 色值类
     if (bColorFlag) {
-      let sKey = item.match(/\.\w+/)[0];
-      let nValue = '#' + item.split('-')[1];
-      aStyleStr.push(`${item}{${oClassNameMap[sKey].replace(/\#/g, nValue)}}`);
+      let tmp = item.split('-');
+      if (tmp.length > 1) {
+        let sKey = tmp.slice(0, tmp.length - 1).join('-');
+        let nValue = '#' + tmp[tmp.length - 1];
+        oClassNameMap[sKey] &&
+          aStyleStr.push(
+            `${item}{${oClassNameMap[sKey].replace(/\#/g, nValue)}}`
+          );
+      }
     }
     // 数值类
     else if (/\d+/.test(item)) {
-      let sKey = item.match(/\.\w+/)[0];
-      let nValue = +item.match(/\d+/)[0];
-      aStyleStr.push(`${item}{${oClassNameMap[sKey].replace(/\$/g, nValue)}}`);
-    // 通用类
+      let tmp = item.split('-');
+      if (tmp.length > 1) {
+        let sKey = tmp.slice(0, tmp.length - 1).join('-');
+        let nValue = tmp[tmp.length - 1];
+        oClassNameMap[sKey] &&
+          aStyleStr.push(
+            `${item}{${oClassNameMap[sKey].replace(/\$/g, nValue)}}`
+          );
+      }
+      // 通用类
     } else {
       let sKey = item;
-      aStyleStr.push(`${item}{${oClassNameMap[sKey]}}`);
+      oClassNameMap[sKey] && aStyleStr.push(`${item}{${oClassNameMap[sKey]}}`);
     }
   });
 
